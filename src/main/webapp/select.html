@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <script src="bootstrap-3.3.7-dist/jquery.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css.css">
+    <!-- <script src="js.js"></script> -->
+</head>
+
+<body>
+    <nav class="navbar-fixed-container">
+        <nav class="navbar navbar-default affix-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <span>商店</span>
+                    </a>
+                </div>
+                <div class=" navbar-ex1-collapse">
+                    <ul class=" nav navbar-nav navbar-right">
+                        <li><a href="javascript:void(0)" id="userid_display" ></a></li>
+                        <li><a href="javascript:void(0)" class="order"><img src="image/order.svg" width="20px" alt=""> 我的订单</a></li>
+                        <li><a href="javascript:void(0)" class="shopcar"><img src="image/shopCart.svg" width="20px" alt=""> 购物车</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container  hidden">
+                <div class="row">
+                    <form action="" method="POST" class="form-inline" role="form">
+                        <div class="input-group">
+                            <input type="text" name="search" id="inputsearch" class="form-control" value=""
+                                required="required" pattern="" title="">
+                            <span class="input-group-btn">
+                                <button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </nav>
+
+    <div class="container">
+        <div class="book_type row">
+            <ul class="nav navbar-default">
+                <li><strong class="strong">分类</strong></li>
+            </ul>
+
+        </div>
+        <div class="book_screen row">
+            <ul class="nav navbar-default">
+                <li><strong class="strong">排序</strong></li>
+                <li><a href="javascript:screen(1)"> 综合 </a></li>
+                <li><a href="javascript:screen(2)"> 销量 </a></li>
+                <li><a href="javascript:screen(3)"> 价格 </a></li>
+            </ul>
+        </div>
+        <div class="book_show">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6 commodity">
+                    <img src="image/commodity.png" alt="">
+                    <samp class="price">￥299</samp>
+                    <p>null</p>
+                    <a href="">购买</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">登陆</h4>
+                </div>
+             
+                    
+                
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">用户名:</label>
+                        <div class="col-md-4">
+                            <input type="text" name="user_name" id="userid" class="form-control" value=""
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">密码：</label>
+                        <div class="col-md-4">
+                            <input type="password" name="password" id="password" class="form-control"
+                                required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" id="link_post" class="btn btn-primary">注册</button>                    
+                    <button type="button" id="login" class="btn btn-primary">登陆</button>
+                    <button type="button" id="rt" class="btn btn-primary hidden">返回</button>
+                    <button type="button" id="post" class="btn btn-primary hidden">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+
+    (function ($) {
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })(jQuery);
+
+    function screen(n) {
+        switch (n) {
+            case 1: $(location).prop('href', 'select.html'); break;
+            case 2:
+                if (type == null)
+                    $(location).prop('href', 'select.html?where=number');
+                else
+                    $(location).prop('href', 'select.html?type=' + escape(type) + '&where=number');
+                break;
+            case 3:
+                if (type == null)
+                    $(location).prop('href', 'select.html?where=price');
+                else
+                    $(location).prop('href', 'select.html?type=' + escape(type) + '&where=price');
+                break;
+        }
+    }
+
+    var type = "null";
+    var where = "null";
+    type = $.getUrlParam('type');
+    where = $.getUrlParam('where');
+
+    $.getJSON("select", { "type": type, "where": where, },
+        function (result) {
+            var json = eval(result);
+            var div = $(".book_show .row").html();
+            $(".book_show").html('');
+            var i = 0;
+            console.log(json);
+            $.each(result, function (index, element) {
+
+                var images = new Array();
+               images = (this.image || "").split("&");
+
+
+                 if (index == "type") {
+                    var type = this;
+                    var arr = new Array();
+                    arr = type.split('&');
+
+                    for (i = 1; i < arr.length; i++) {
+                        $(".book_type ul").append("<li><a href=\"\"></a></li>");
+                        $(".book_type ul li:last a").html(arr[i]);
+                        $(".book_type ul li:last a").attr("href", "select.html?type=" + escape(arr[i]));
+                    }
+                    i = 0;
+                } else {
+                    if (i % 4 == 0) {
+                        $(".book_show").append("<div class=\"row\"></div>");
+                    }
+                    $(".book_show .row:last").append(div);
+                    $(".book_show .row div:last a").attr('href', "shop.html?id=" + this.id);
+                    $(".book_show .row div:last img").attr('src', images[0]);
+                    $(".book_show .row div:last p").html(this.title);
+                    $(".book_show .row div:last .price").html("￥" + this.price);
+                    i++;
+                }
+
+            });
+        });
+
+</script>
+<script src="login.js"></script>

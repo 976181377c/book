@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <script src="bootstrap-3.3.7-dist/jquery.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css.css">
+    <!-- <script src="js.js"></script> -->
+</head>
+
+<body>
+
+    <nav class="navbar-fixed-container">
+        <nav class="navbar navbar-default affix-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <span>商店</span>
+                    </a>
+                </div>
+                <div class=" navbar-ex1-collapse">
+                    <ul class=" nav navbar-nav navbar-right">
+                        <li><a href="javascript:void(0)" id="userid_display"></a></li>
+                        <li><a href="javascript:void(0)" class="order"><img src="image/order.svg" width="20px" alt="">
+                                我的订单</a></li>
+                        <li><a href="javascript:void(0)" class="shopcar"><img src="image/shopCart.svg" width="20px"
+                                    alt=""> 购物车</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container  hidden">
+                <div class="row">
+                    <form action="" method="POST" class="form-inline" role="form">
+                        <div class="input-group">
+                            <input type="text" name="search" id="inputsearch" class="form-control" value=""
+                                required="required" pattern="" title="">
+                            <span class="input-group-btn">
+                                <button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </nav>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div id="commodity_show">
+                    <img class="img-container" src="image/commodity.png" alt="">
+                </div>
+                <div class="row" id="commodity_shows">
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-ms-3 active"><img class="img-container"
+                            src="image/commodity.png" alt=""></div>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-ms-3"><img class="img-container"
+                            src="image/commodity.png" alt=""></div>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-ms-3"><img class="img-container"
+                            src="image/commodity.png" alt=""></div>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-ms-3"><img class="img-container"
+                            src="image/commodity.png" alt=""></div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <h3 class="shop_title">title</h3>
+                <legend></legend>
+                <strong>价格：</strong> <samp class="price" style="font-size: 3rem;">￥299</samp>
+                <legend></legend>
+
+                <div>
+                    <label for="inputnum">数量:</label>
+                    <div class="input-group form-group">
+                        <input type="number" name="num" id="inputnum" class="form-control" value="1" min="1" max="99"
+                            step="" required="required" title="">
+                        <samp class="input-group-btn">
+                            <button type="submit" id="buy" class="btn btn-primary">购买</button>
+                        </samp>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="jieshao">
+            <h3 style="text-align: center;margin-top: 40px;">产品介绍</h3>
+            <legend></legend>
+            <p>null</p>
+        </div>
+        <div id="evaluate">
+            <h3 style="text-align: center;margin-top: 40px;">用户评价</h3>
+            <legend></legend>
+            <div class="row">
+                <a class="profile-image" href="#"></a>
+                <div class="user-body">
+                    <h4 class="userName">cc</h4>
+                    <p class="userEvaluate">cccc</p>
+                </div>
+                <legend></legend>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <legend>
+                        <h3 style="text-align: center;margin-top: 40px;">写评价</h3>
+                    </legend>
+
+                    <textarea name="textarea" id="inputtextarea" class="form-control" rows="3"
+                        required="required"></textarea>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <button id="evaluateBtn" type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-id">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: center;">购买成功</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">登陆</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">用户名:</label>
+                        <div class="col-md-4">
+                            <input type="text" name="user_name" id="userid" class="form-control" value=""
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">密码：</label>
+                        <div class="col-md-4">
+                            <input type="password" name="password" id="password" class="form-control"
+                                required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" id="link_post" class="btn btn-primary">注册</button>
+                    <button type="button" id="login" class="btn btn-primary">登陆</button>
+                    <button type="button" id="rt" class="btn btn-primary hidden">返回</button>
+                    <button type="button" id="post" class="btn btn-primary hidden">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 left">
+                <ul>
+                    <li><a href="">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</html>
+<script>
+
+    $('#commodity_shows div').hover(function () {
+        // over
+        $('#commodity_shows div').removeClass('active');
+        $(this).addClass('active');
+        $('#commodity_show img').attr('src', $(this).find('img').attr('src'));
+
+    }, function () {
+        // out
+
+    });
+
+    (function ($) {
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })(jQuery);
+
+    var id = $.getUrlParam('id');
+    $.getJSON("shop", { "id": id },
+        function (result) {
+            var json = eval(result.commodity);
+
+            var images = new Array();
+            images = (json.image || "").split("&");
+
+            console.log(images);
+            $(".shop_title").html(json.title);
+            $(".price").html("￥" + json.price);
+            $("#commodity_show img").attr("src", images[0]);
+            for (var x = 0; x < 4; x++) {
+                if (images[x] == null)
+                    $("#commodity_shows img").eq(x).attr("src", images[0]);
+                else
+                    $("#commodity_shows img").eq(x).attr("src", images[x]);
+            }
+
+            $("#jieshao p").html(json.introduce);
+
+        }
+
+    )
+
+    $("#buy").click(function () {
+        $("#modal-id").modal("show");
+        var num = $("#inputnum").val();
+        $.getJSON("Buy", { "num": num, "id": id },
+            function (result) {
+
+            }
+        )
+        $("#evaluateBtn").click(function () {
+            var num = $("#inputnum").val();
+            $.getJSON("Buy", { "num": num, "id": id },
+                function (result) {
+
+                }
+            )
+        });
+    });
+
+
+</script>
+<script src="login.js"></script>

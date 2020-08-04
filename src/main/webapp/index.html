@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vscode</title>
+</head>
+
+<link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+<link rel="stylesheet" href="css.css">
+<script src="bootstrap-3.3.7-dist/jquery.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="js.js"></script>
+
+
+<body>
+
+    <nav class="navbar-fixed-container" style="margin: 0px;">
+        <nav class="navbar navbar-default affix-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <span>商店</span>
+                    </a>
+                </div>
+                <div class=" navbar-ex1-collapse">
+                    <ul class=" nav navbar-nav navbar-right">
+                        <li><a href="javascript:void(0)" id="userid_display" ></a></li>
+                        <li><a href="javascript:void(0)" class="order"><img src="image/order.svg" width="20px" alt=""> 我的订单</a></li>
+                        <li><a href="javascript:void(0)" class="shopcar"><img src="image/shopCart.svg" width="20px" alt=""> 购物车</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container  hidden">
+                <div class="row">
+                    <form action="" method="POST" class="form-inline" role="form">
+                        <div class="input-group">
+                            <input type="text" name="search" id="inputsearch" class="form-control" value=""
+                                required="required" pattern="" title="">
+                            <span class="input-group-btn">
+                                <button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <ul class="nav navbar-nav">
+                <li id="category-list-display"><a>全部类目</a></li>
+            </ul>
+        </div>
+
+        <div id="category-list" class="row hidden">
+            <ul class="nav navbar-nav container">
+                <h4>分类</h4>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="jumbotron home">
+        <div class="container">
+            <div class="row">
+
+                <div id="carousel-jumbotron" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-jumbotron" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-jumbotron" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-jumbotron" data-slide-to="2" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img src="image/ia_100000000.jpg" width="100%" alt="">
+                            <a class="carousel-control" href=""></a>
+                        </div>
+                        <div class="item">
+                            <img src="image/ia_100000001.jpg" width="100%" alt="">
+                            <a class="carousel-control" href=""></a>
+
+                        </div>
+                        <div class="item active">
+                            <img src="image/ia_100000003.jpg" width="100%" alt="">
+                            <a class="carousel-control" href=""></a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-jumbotron" data-slide="prev"><span
+                            class="glyphicon glyphicon-chevron-left"></span></a>
+                    <a class="right carousel-control" href="#carousel-jumbotron" data-slide="next"><span
+                            class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="container" style="background-color: white;margin-top: 15px;">
+            <div class="row">
+                <ul class="nav navbar">
+                    <li style="margin-left: 15px;">
+                        <h3>排行榜</h3>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row" id="Top">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                    <a href="">
+                        <h3>Top1</h3>
+                        <div class="img-container"><img src="image/commodity.png" alt=""></div>
+                    </a>
+                    <p>null</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center;">为你推荐</h2>
+        <div class="container" id="recommend">
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                    <div class="img-container">
+                        <a href=""><img src="image/commodity.png" alt=""></a>
+                    </div>
+                    <p class="title">null</p>
+                    <p class="price">￥299</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">登陆</h4>
+                </div>
+             
+                    
+                
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">用户名:</label>
+                        <div class="col-md-4">
+                            <input type="text" name="user_name" id="userid" class="form-control" value=""
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input" class="col-md-2 col-md-offset-2 control-label">密码：</label>
+                        <div class="col-md-4">
+                            <input type="password" name="password" id="password" class="form-control"
+                                required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" id="link_post" class="btn btn-primary">注册</button>                    
+                    <button type="button" id="login" class="btn btn-primary">登陆</button>
+                    <button type="button" id="rt" class="btn btn-primary hidden">返回</button>
+                    <button type="button" id="post" class="btn btn-primary hidden">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 left">
+                <ul>                  
+                    <li><a href="">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
+<script src="login.js"></script>
